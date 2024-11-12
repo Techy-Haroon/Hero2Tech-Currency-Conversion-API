@@ -1,0 +1,21 @@
+<!-- view_api_keys.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your API Keys</title>
+</head>
+<body>
+    <h1>Your API Keys</h1>
+    <ul>
+        {% for key in api_keys %}
+        <li>{{ key.key }} - <a href="{{ url_for('revoke_api_key', key_id=key.id) }}">Revoke</a></li>
+        {% endfor %}
+    </ul>
+
+    {% if api_keys|length < 3 %}
+    <form action="{{ url_for('generate_api_key') }}" method="post">
+        <button type="submit">Generate New API Key</button>
+    </form>
+    {% endif %}
+</body>
+</html>

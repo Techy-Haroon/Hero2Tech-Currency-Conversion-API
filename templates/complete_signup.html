@@ -1,0 +1,40 @@
+<!-- complete_signup.html -->
+<!DOCTYPE html>
+<title>Complete Signup - Hero2Tech</title>
+{% extends 'base.html' %}
+{% block content %}
+<section class="signup">
+    <h2>Complete Signup</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% set latest_message = messages[0] %}
+        <ul class="flashes">
+            <li class="flash {{ latest_message[0] }}">{{ latest_message[1] }}</li>
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <hr>
+    <form method="POST" action="{{ url_for('complete_signup') }}">
+        {{ form.hidden_tag() }}
+        <div>
+    <label for="username">Username:</label><br>
+    <input class="input-field" id="username" maxlength="20" minlength="3" name="username" required size="32" type="text" value="{{ session.get('username') }}"><br>
+    </div>
+    <div>
+        <label for="email">Email</label><br>
+        <input class="email-field input-field" id="email" maxlength="45" minlength="6" value="{{ email }}" name="email" size="32" type="email" readonly><br>
+    </div>
+    <div>
+        <label for="password">Password:</label><br>
+        {{ form.password(size=32, class_='input-field') }}<br>
+    </div>
+    <div>
+        <label for="confirm_password">Confirm Password</label><br>
+        {{ form.confirm_password(size=32, class_='input-field') }}<br>
+    </div>
+    <div>
+        <input id="submit" name="submit" type="submit" value="Complete Signup" class="btn btn-primary">
+    </div>
+    </form>
+    </section>
+{% endblock %}

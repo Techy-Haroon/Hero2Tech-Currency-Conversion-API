@@ -1,0 +1,29 @@
+<!-- docs_go.html -->
+{% if session["user_id"] %}
+        <section class="patreon-offer">
+            <h2>Unlock More with Our Patreon Membership!</h2>
+            <p>Upgrade your API experience by joining our Patreon community. With a membership, you'll enjoy:</p>
+            <ul>
+                <li><strong>10,000 API Requests per Month:</strong> Increase your limit from 1,000 to 10,000 requests each month, perfect for high-demand applications.</li>
+                <li><strong>10 API Keys & 30/day</strong> Get 10 API Keys at a time & Generation of 30 API keys/day.</li>
+                <li><strong>Priority Support:</strong> Get faster responses and dedicated support to assist with any issues or questions.</li>
+                <li><strong>Exclusive Perks:</strong> Access special features and updates before anyone else.</li>
+                <li><strong>Support Development:</strong> Help us continue to improve and expand our services by supporting our work.</li>
+            </ul>
+            <p>Ready to get more from your API?</p>
+            <a href="https://www.patreon.com/Hero2Tech" target="_blank" class="btn">Join Us on Patreon</a>
+        </section>
+        <div class="response-box">
+            <h3>Try it out</h3>
+            <p>Want a Live workaround? Go to Dashboard and send requests instantly. So, You can test & run it everywhere!</p>
+            <button id="go-dashboard" class="btn">Dashboard</button>
+        </div>
+        {% elif session["in_process"] %}
+        <h3>Live Testing?</h3>
+        <p>Want a Live workaround? Complete Your signup and have requests sent on the fly from dashboard. So, You can run it everywhere!</p>
+        <button id="go-complete" class="btn">Complete Sign Up</button>
+        {% else %}
+        <h3>Live Testing?</h3>
+        <p>Want a Live workaround? Choose a Plan which suits you and start today!</p>
+        <button id="go-plans" class="btn">Plans</button>
+        {% endif %}

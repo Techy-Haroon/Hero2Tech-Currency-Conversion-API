@@ -1,0 +1,19 @@
+<!-- response_codes.html -->
+<title>Response Codes Information - API Documentation - Hero2Tech</title>
+{% extends 'docs_base.html' %}
+{% block content %}
+    <div class="container">
+        <h1>Response Codes</h1>
+        <p>Below is a list of common HTTP response codes returned by the API:</p>
+        <ul>
+            <li><strong>200 OK</strong>: The request was successful, and the server responded with the requested data.</li>
+            <li><strong>400 Bad Request</strong>: The server could not understand the request due to invalid syntax or missing parameters.</li>
+            <li><strong>401 Unauthorized</strong>: Authentication failed. The API key provided is missing or invalid.</li>
+            <li><strong>403 Forbidden</strong>: The user has reached their request limit.</li>
+            <li><strong>500 Internal Server Error</strong>: An unexpected error occurred on the server. Please try again later.</li>
+        </ul>
+        <p>Make sure to always include your API key in your requests, either in the Authorization header or as a URL parameter.</p>
+        <span class="note">*If You Include API key in Authorization header, then no matter if you gave it as URL parameter, it is always ignored.</span>
+        {% include 'docs_go.html' %}
+    </div>
+{% endblock %}

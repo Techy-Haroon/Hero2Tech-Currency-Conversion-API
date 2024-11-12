@@ -1,0 +1,27 @@
+<!-- resend_confirmation.html -->
+<!DOCTYPE html>
+<title>Resend Confirmation Email - Hero2Tech</title>
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="reset-password">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% set latest_message = messages[0] %}
+        <ul class="flashes">
+            <li style="display: flex;" class="flash {{ latest_message[0] }}">{% autoescape false %}{{ latest_message[1] }}{% endautoescape %}</li>
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <hr>
+    <h1>Resend Confirmation Email</h1>
+    <form method="POST" action="{{ url_for('resend_confirmation') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email.label }}<br>
+                {{ form.email(class="form-control") }}<br><br>
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+</section>
+{% endblock %}

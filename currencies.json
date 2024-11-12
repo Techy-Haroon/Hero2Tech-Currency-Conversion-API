@@ -1,0 +1,1124 @@
+{
+    "ADA": {
+        "code": "ADA",
+        "value": 1.6935283055,
+        "name": "Cardano",
+        "country": "N/A"
+    },
+    "AED": {
+        "code": "AED",
+        "value": 3.6724706177,
+        "name": "UAE Dirham",
+        "country": "United Arab Emirates"
+    },
+    "AFN": {
+        "code": "AFN",
+        "value": 67.9169098202,
+        "name": "Afghan Afghani",
+        "country": "Afghanistan"
+    },
+    "ALL": {
+        "code": "ALL",
+        "value": 91.2908623276,
+        "name": "Albanian Lek",
+        "country": "Albania"
+    },
+    "AMD": {
+        "code": "AMD",
+        "value": 388.1878400179,
+        "name": "Armenian Dram",
+        "country": "Armenia"
+    },
+    "ANG": {
+        "code": "ANG",
+        "value": 1.785200227,
+        "name": "Netherlands Antillean Guilder",
+        "country": "Netherlands Antilles"
+    },
+    "AOA": {
+        "code": "AOA",
+        "value": 910.9731367028,
+        "name": "Angolan Kwanza",
+        "country": "Angola"
+    },
+    "ARB": {
+        "code": "ARB",
+        "value": 1.5878443557,
+        "name": "Arbitrum",
+        "country": "N/A"
+    },
+    "ARS": {
+        "code": "ARS",
+        "value": 993.0864409411,
+        "name": "Argentine Peso",
+        "country": "Argentina"
+    },
+    "AUD": {
+        "code": "AUD",
+        "value": 1.5188402859,
+        "name": "Australian Dollar",
+        "country": "Australia"
+    },
+    "AVAX": {
+        "code": "AVAX",
+        "value": 0.0312885619,
+        "name": "Avalanche",
+        "country": "N/A"
+    },
+    "AWG": {
+        "code": "AWG",
+        "value": 1.79,
+        "name": "Aruban Florin",
+        "country": "Aruba"
+    },
+    "AZN": {
+        "code": "AZN",
+        "value": 1.7,
+        "name": "Azerbaijani Manat",
+        "country": "Azerbaijan"
+    },
+    "BAM": {
+        "code": "BAM",
+        "value": 1.8239401915,
+        "name": "Bosnia-Herzegovina Convertible Mark",
+        "country": "Bosnia and Herzegovina"
+    },
+    "BBD": {
+        "code": "BBD",
+        "value": 2,
+        "name": "Barbadian Dollar",
+        "country": "Barbados"
+    },
+    "BDT": {
+        "code": "BDT",
+        "value": 119.9306498473,
+        "name": "Bangladeshi Taka",
+        "country": "Bangladesh"
+    },
+    "BGN": {
+        "code": "BGN",
+        "value": 1.8139903459,
+        "name": "Bulgarian Lev",
+        "country": "Bulgaria"
+    },
+    "BHD": {
+        "code": "BHD",
+        "value": 0.376,
+        "name": "Bahraini Dinar",
+        "country": "Bahrain"
+    },
+    "BIF": {
+        "code": "BIF",
+        "value": 2897.4245618222,
+        "name": "Burundian Franc",
+        "country": "Burundi"
+    },
+    "BMD": {
+        "code": "BMD",
+        "value": 1,
+        "name": "Bermudian Dollar",
+        "country": "Bermuda"
+    },
+    "BNB": {
+        "code": "BNB",
+        "value": 0.0015929535,
+        "name": "Binance Coin",
+        "country": "N/A"
+    },
+    "BND": {
+        "code": "BND",
+        "value": 1.3265001769,
+        "name": "Brunei Dollar",
+        "country": "Brunei"
+    },
+    "BOB": {
+        "code": "BOB",
+        "value": 6.9307408553,
+        "name": "Bolivian Boliviano",
+        "country": "Bolivia"
+    },
+    "BRL": {
+        "code": "BRL",
+        "value": 5.7631406271,
+        "name": "Brazilian Real",
+        "country": "Brazil"
+    },
+    "BSD": {
+        "code": "BSD",
+        "value": 1,
+        "name": "Bahamian Dollar",
+        "country": "Bahamas"
+    },
+    "BTC": {
+        "code": "BTC",
+        "value": 1.24317e-05,
+        "name": "Bitcoin",
+        "country": "N/A"
+    },
+    "BTN": {
+        "code": "BTN",
+        "value": 84.5141559328,
+        "name": "Bhutanese Ngultrum",
+        "country": "Bhutan"
+    },
+    "BWP": {
+        "code": "BWP",
+        "value": 13.4502117925,
+        "name": "Botswana Pula",
+        "country": "Botswana"
+    },
+    "BYN": {
+        "code": "BYN",
+        "value": 3.2699885586,
+        "name": "Belarusian Ruble",
+        "country": "Belarus"
+    },
+    "BYR": {
+        "code": "BYR",
+        "value": 32699.88735803,
+        "name": "Belarusian Ruble (pre-2016)",
+        "country": "Belarus"
+    },
+    "BZD": {
+        "code": "BZD",
+        "value": 2,
+        "name": "Belize Dollar",
+        "country": "Belize"
+    },
+    "CAD": {
+        "code": "CAD",
+        "value": 1.390750144,
+        "name": "Canadian Dollar",
+        "country": "Canada"
+    },
+    "CDF": {
+        "code": "CDF",
+        "value": 2842.9818442178,
+        "name": "Congolese Franc",
+        "country": "Democratic Republic of the Congo"
+    },
+    "CHF": {
+        "code": "CHF",
+        "value": 0.8760001671,
+        "name": "Swiss Franc",
+        "country": "Switzerland"
+    },
+    "CLF": {
+        "code": "CLF",
+        "value": 0.0252400046,
+        "name": "Chilean Unit of Account (UF)",
+        "country": "Chile"
+    },
+    "CLP": {
+        "code": "CLP",
+        "value": 971.3541676574,
+        "name": "Chilean Peso",
+        "country": "Chile"
+    },
+    "CNY": {
+        "code": "CNY",
+        "value": 7.1737310323,
+        "name": "Chinese Yuan",
+        "country": "China"
+    },
+    "COP": {
+        "code": "COP",
+        "value": 4356.3331932524,
+        "name": "Colombian Peso",
+        "country": "Colombia"
+    },
+    "CRC": {
+        "code": "CRC",
+        "value": 513.3289979724,
+        "name": "Costa Rican Col\u00f3n",
+        "country": "Costa Rica"
+    },
+    "CUC": {
+        "code": "CUC",
+        "value": 1,
+        "name": "Cuban Convertible Peso",
+        "country": "Cuba"
+    },
+    "CUP": {
+        "code": "CUP",
+        "value": 24,
+        "name": "Cuban Peso",
+        "country": "Cuba"
+    },
+    "CVE": {
+        "code": "CVE",
+        "value": 102.9017793591,
+        "name": "Cape Verdean Escudo",
+        "country": "Cape Verde"
+    },
+    "CZK": {
+        "code": "CZK",
+        "value": 23.502943434,
+        "name": "Czech Koruna",
+        "country": "Czech Republic"
+    },
+    "DAI": {
+        "code": "DAI",
+        "value": 1.0010356903,
+        "name": "Dai",
+        "country": "N/A"
+    },
+    "DJF": {
+        "code": "DJF",
+        "value": 177.721,
+        "name": "Djiboutian Franc",
+        "country": "Djibouti"
+    },
+    "DKK": {
+        "code": "DKK",
+        "value": 6.9587207659,
+        "name": "Danish Krone",
+        "country": "Denmark"
+    },
+    "DOP": {
+        "code": "DOP",
+        "value": 60.3019486565,
+        "name": "Dominican Peso",
+        "country": "Dominican Republic"
+    },
+    "DOT": {
+        "code": "DOT",
+        "value": 0.1904880773,
+        "name": "Polkadot",
+        "country": "N/A"
+    },
+    "DZD": {
+        "code": "DZD",
+        "value": 134.0174971534,
+        "name": "Algerian Dinar",
+        "country": "Algeria"
+    },
+    "EGP": {
+        "code": "EGP",
+        "value": 49.2195169604,
+        "name": "Egyptian Pound",
+        "country": "Egypt"
+    },
+    "ERN": {
+        "code": "ERN",
+        "value": 15,
+        "name": "Eritrean Nakfa",
+        "country": "Eritrea"
+    },
+    "ETB": {
+        "code": "ETB",
+        "value": 124.3080643373,
+        "name": "Ethiopian Birr",
+        "country": "Ethiopia"
+    },
+    "ETH": {
+        "code": "ETH",
+        "value": 0.0003135231,
+        "name": "Ethereum",
+        "country": "N/A"
+    },
+    "EUR": {
+        "code": "EUR",
+        "value": 0.9332301238,
+        "name": "Euro",
+        "country": "Eurozone"
+    },
+    "FJD": {
+        "code": "FJD",
+        "value": 2.2383804423,
+        "name": "Fijian Dollar",
+        "country": "Fiji"
+    },
+    "FKP": {
+        "code": "FKP",
+        "value": 0.7742046487,
+        "name": "Falkland Islands Pound",
+        "country": "Falkland Islands"
+    },
+    "GBP": {
+        "code": "GBP",
+        "value": 0.7742200883,
+        "name": "British Pound",
+        "country": "United Kingdom"
+    },
+    "GEL": {
+        "code": "GEL",
+        "value": 2.724860542,
+        "name": "Georgian Lari",
+        "country": "Georgia"
+    },
+    "GGP": {
+        "code": "GGP",
+        "value": 0.774204646,
+        "name": "Guernsey Pound",
+        "country": "Guernsey"
+    },
+    "GHS": {
+        "code": "GHS",
+        "value": 16.2929827756,
+        "name": "Ghanaian Cedi",
+        "country": "Ghana"
+    },
+    "GIP": {
+        "code": "GIP",
+        "value": 0.7742042209,
+        "name": "Gibraltar Pound",
+        "country": "Gibraltar"
+    },
+    "GMD": {
+        "code": "GMD",
+        "value": 57.3493258952,
+        "name": "Gambian Dalasi",
+        "country": "Gambia"
+    },
+    "GNF": {
+        "code": "GNF",
+        "value": 8602.310180313,
+        "name": "Guinean Franc",
+        "country": "Guinea"
+    },
+    "GTQ": {
+        "code": "GTQ",
+        "value": 7.7085615066,
+        "name": "Guatemalan Quetzal",
+        "country": "Guatemala"
+    },
+    "GYD": {
+        "code": "GYD",
+        "value": 208.7440211312,
+        "name": "Guyanese Dollar",
+        "country": "Guyana"
+    },
+    "HKD": {
+        "code": "HKD",
+        "value": 7.7731209965,
+        "name": "Hong Kong Dollar",
+        "country": "Hong Kong"
+    },
+    "HNL": {
+        "code": "HNL",
+        "value": 25.0057731391,
+        "name": "Honduran Lempira",
+        "country": "Honduras"
+    },
+    "HRK": {
+        "code": "HRK",
+        "value": 6.5541111933,
+        "name": "Croatian Kuna",
+        "country": "Croatia"
+    },
+    "HTG": {
+        "code": "HTG",
+        "value": 133.3911643319,
+        "name": "Haitian Gourde",
+        "country": "Haiti"
+    },
+    "HUF": {
+        "code": "HUF",
+        "value": 379.6900613111,
+        "name": "Hungarian Forint",
+        "country": "Hungary"
+    },
+    "IDR": {
+        "code": "IDR",
+        "value": 15641.090770955,
+        "name": "Indonesian Rupiah",
+        "country": "Indonesia"
+    },
+    "ILS": {
+        "code": "ILS",
+        "value": 3.7394306324,
+        "name": "Israeli Shekel",
+        "country": "Israel"
+    },
+    "IMP": {
+        "code": "IMP",
+        "value": 0.7742040363,
+        "name": "Isle of Man Pound",
+        "country": "Isle of Man"
+    },
+    "INR": {
+        "code": "INR",
+        "value": 84.3260240039,
+        "name": "Indian Rupee",
+        "country": "India"
+    },
+    "IQD": {
+        "code": "IQD",
+        "value": 1307.301774078,
+        "name": "Iraqi Dinar",
+        "country": "Iraq"
+    },
+    "IRR": {
+        "code": "IRR",
+        "value": 41984.863602652,
+        "name": "Iranian Rial",
+        "country": "Iran"
+    },
+    "ISK": {
+        "code": "ISK",
+        "value": 138.5427939973,
+        "name": "Icelandic Kr\u00f3na",
+        "country": "Iceland"
+    },
+    "JEP": {
+        "code": "JEP",
+        "value": 0.7742044619,
+        "name": "Jersey Pound",
+        "country": "Jersey"
+    },
+    "JMD": {
+        "code": "JMD",
+        "value": 158.5183415649,
+        "name": "Jamaican Dollar",
+        "country": "Jamaica"
+    },
+    "JOD": {
+        "code": "JOD",
+        "value": 0.71,
+        "name": "Jordanian Dinar",
+        "country": "Jordan"
+    },
+    "JPY": {
+        "code": "JPY",
+        "value": 152.8928771046,
+        "name": "Japanese Yen",
+        "country": "Japan"
+    },
+    "KES": {
+        "code": "KES",
+        "value": 129.6881063945,
+        "name": "Kenyan Shilling",
+        "country": "Kenya"
+    },
+    "KGS": {
+        "code": "KGS",
+        "value": 86.433430645,
+        "name": "Kyrgyzstani Som",
+        "country": "Kyrgyzstan"
+    },
+    "KHR": {
+        "code": "KHR",
+        "value": 4064.5701697611,
+        "name": "Cambodian Riel",
+        "country": "Cambodia"
+    },
+    "KMF": {
+        "code": "KMF",
+        "value": 457.2215700972,
+        "name": "Comorian Franc",
+        "country": "Comoros"
+    },
+    "KPW": {
+        "code": "KPW",
+        "value": 900.0047888719,
+        "name": "North Korean Won",
+        "country": "North Korea"
+    },
+    "KRW": {
+        "code": "KRW",
+        "value": 1394.0449505895,
+        "name": "South Korean Won",
+        "country": "South Korea"
+    },
+    "KWD": {
+        "code": "KWD",
+        "value": 0.3064400415,
+        "name": "Kuwaiti Dinar",
+        "country": "Kuwait"
+    },
+    "KYD": {
+        "code": "KYD",
+        "value": 0.83333,
+        "name": "Cayman Islands Dollar",
+        "country": "Cayman Islands"
+    },
+    "KZT": {
+        "code": "KZT",
+        "value": 491.822803216,
+        "name": "Kazakhstani Tenge",
+        "country": "Kazakhstan"
+    },
+    "LAK": {
+        "code": "LAK",
+        "value": 21932.13563152,
+        "name": "Lao Kip",
+        "country": "Laos"
+    },
+    "LBP": {
+        "code": "LBP",
+        "value": 89506.292100754,
+        "name": "Lebanese Pound",
+        "country": "Lebanon"
+    },
+    "LKR": {
+        "code": "LKR",
+        "value": 293.0971424273,
+        "name": "Sri Lankan Rupee",
+        "country": "Sri Lanka"
+    },
+    "LRD": {
+        "code": "LRD",
+        "value": 189.5163792568,
+        "name": "Liberian Dollar",
+        "country": "Liberia"
+    },
+    "LSL": {
+        "code": "LSL",
+        "value": 17.5969117994,
+        "name": "Lesotho Loti",
+        "country": "Lesotho"
+    },
+    "LTC": {
+        "code": "LTC",
+        "value": 0.0130581406,
+        "name": "Litecoin",
+        "country": "N/A"
+    },
+    "LTL": {
+        "code": "LTL",
+        "value": 3.2225049284,
+        "name": "Lithuanian Litas",
+        "country": "Lithuania"
+    },
+    "LVL": {
+        "code": "LVL",
+        "value": 0.6559245183,
+        "name": "Latvian Lats",
+        "country": "Latvia"
+    },
+    "LYD": {
+        "code": "LYD",
+        "value": 4.8480107431,
+        "name": "Libyan Dinar",
+        "country": "Libya"
+    },
+    "MAD": {
+        "code": "MAD",
+        "value": 9.8711712354,
+        "name": "Moroccan Dirham",
+        "country": "Morocco"
+    },
+    "MATIC": {
+        "code": "MATIC",
+        "value": 2.460020577,
+        "name": "Polygon",
+        "country": "N/A"
+    },
+    "MDL": {
+        "code": "MDL",
+        "value": 17.8140819476,
+        "name": "Moldovan Leu",
+        "country": "Moldova"
+    },
+    "MGA": {
+        "code": "MGA",
+        "value": 4625.3810450323,
+        "name": "Malagasy Ariary",
+        "country": "Madagascar"
+    },
+    "MKD": {
+        "code": "MKD",
+        "value": 57.3226995418,
+        "name": "Macedonian Denar",
+        "country": "North Macedonia"
+    },
+    "MMK": {
+        "code": "MMK",
+        "value": 2096.8701868744,
+        "name": "Myanmar Kyat",
+        "country": "Myanmar"
+    },
+    "MNT": {
+        "code": "MNT",
+        "value": 3418.821961927,
+        "name": "Mongolian T\u00f6gr\u00f6g",
+        "country": "Mongolia"
+    },
+    "MOP": {
+        "code": "MOP",
+        "value": 8.0277615658,
+        "name": "Macanese Pataca",
+        "country": "Macau"
+    },
+    "MRO": {
+        "code": "MRO",
+        "value": 356.999828,
+        "name": "Mauritanian Ouguiya (pre-2018)",
+        "country": "Mauritania"
+    },
+    "MRU": {
+        "code": "MRU",
+        "value": 40.06212566,
+        "name": "Mauritanian Ouguiya",
+        "country": "Mauritania"
+    },
+    "MUR": {
+        "code": "MUR",
+        "value": 46.1633788896,
+        "name": "Mauritian Rupee",
+        "country": "Mauritius"
+    },
+    "MVR": {
+        "code": "MVR",
+        "value": 15.4408029165,
+        "name": "Maldivian Rufiyaa",
+        "country": "Maldives"
+    },
+    "MWK": {
+        "code": "MWK",
+        "value": 1732.9423042482,
+        "name": "Malawian Kwacha",
+        "country": "Malawi"
+    },
+    "MXN": {
+        "code": "MXN",
+        "value": 20.1245737366,
+        "name": "Mexican Peso",
+        "country": "Mexico"
+    },
+    "MYR": {
+        "code": "MYR",
+        "value": 4.3839304455,
+        "name": "Malaysian Ringgit",
+        "country": "Malaysia"
+    },
+    "MZN": {
+        "code": "MZN",
+        "value": 63.5363185177,
+        "name": "Mozambican Metical",
+        "country": "Mozambique"
+    },
+    "NAD": {
+        "code": "NAD",
+        "value": 17.5386932303,
+        "name": "Namibian Dollar",
+        "country": "Namibia"
+    },
+    "NGN": {
+        "code": "NGN",
+        "value": 1664.3854899697,
+        "name": "Nigerian Naira",
+        "country": "Nigeria"
+    },
+    "NIO": {
+        "code": "NIO",
+        "value": 36.894216671,
+        "name": "Nicaraguan C\u00f3rdoba",
+        "country": "Nicaragua"
+    },
+    "NOK": {
+        "code": "NOK",
+        "value": 10.9940912355,
+        "name": "Norwegian Krone",
+        "country": "Norway"
+    },
+    "NPR": {
+        "code": "NPR",
+        "value": 135.3127549223,
+        "name": "Nepalese Rupee",
+        "country": "Nepal"
+    },
+    "NZD": {
+        "code": "NZD",
+        "value": 1.6761703351,
+        "name": "New Zealand Dollar",
+        "country": "New Zealand"
+    },
+    "OMR": {
+        "code": "OMR",
+        "value": 0.3839700453,
+        "name": "Omani Rial",
+        "country": "Oman"
+    },
+    "OP": {
+        "code": "OP",
+        "value": 0.6082767297,
+        "name": "Optimism",
+        "country": "N/A"
+    },
+    "PAB": {
+        "code": "PAB",
+        "value": 0.9990801407,
+        "name": "Panamanian Balboa",
+        "country": "Panama"
+    },
+    "PEN": {
+        "code": "PEN",
+        "value": 3.7684907359,
+        "name": "Peruvian Sol",
+        "country": "Peru"
+    },
+    "PGK": {
+        "code": "PGK",
+        "value": 3.9810807758,
+        "name": "Papua New Guinean Kina",
+        "country": "Papua New Guinea"
+    },
+    "PHP": {
+        "code": "PHP",
+        "value": 58.4350883,
+        "name": "Philippine Peso",
+        "country": "Philippines"
+    },
+    "PKR": {
+        "code": "PKR",
+        "value": 277.4897317037,
+        "name": "Pakistani Rupee",
+        "country": "Pakistan"
+    },
+    "PLN": {
+        "code": "PLN",
+        "value": 4.0326405024,
+        "name": "Polish Zloty",
+        "country": "Poland"
+    },
+    "PYG": {
+        "code": "PYG",
+        "value": 7836.6105833376,
+        "name": "Paraguayan Guaran\u00ed",
+        "country": "Paraguay"
+    },
+    "QAR": {
+        "code": "QAR",
+        "value": 3.6378704733,
+        "name": "Qatari Riyal",
+        "country": "Qatar"
+    },
+    "RON": {
+        "code": "RON",
+        "value": 4.6413804703,
+        "name": "Romanian Leu",
+        "country": "Romania"
+    },
+    "RSD": {
+        "code": "RSD",
+        "value": 108.4451591531,
+        "name": "Serbian Dinar",
+        "country": "Serbia"
+    },
+    "RUB": {
+        "code": "RUB",
+        "value": 97.3901360832,
+        "name": "Russian Ruble",
+        "country": "Russia"
+    },
+    "RWF": {
+        "code": "RWF",
+        "value": 1359.3136322372,
+        "name": "Rwandan Franc",
+        "country": "Rwanda"
+    },
+    "SAR": {
+        "code": "SAR",
+        "value": 3.7468905357,
+        "name": "Saudi Riyal",
+        "country": "Saudi Arabia"
+    },
+    "SBD": {
+        "code": "SBD",
+        "value": 8.3737973629,
+        "name": "Solomon Islands Dollar",
+        "country": "Solomon Islands"
+    },
+    "SCR": {
+        "code": "SCR",
+        "value": 14.9879626442,
+        "name": "Seychellois Rupee",
+        "country": "Seychelles"
+    },
+    "SDG": {
+        "code": "SDG",
+        "value": 601.5,
+        "name": "Sudanese Pound",
+        "country": "Sudan"
+    },
+    "SEK": {
+        "code": "SEK",
+        "value": 10.8175716854,
+        "name": "Swedish Krona",
+        "country": "Sweden"
+    },
+    "SGD": {
+        "code": "SGD",
+        "value": 1.3267102219,
+        "name": "Singapore Dollar",
+        "country": "Singapore"
+    },
+    "SHP": {
+        "code": "SHP",
+        "value": 0.7742201371,
+        "name": "Saint Helena Pound",
+        "country": "Saint Helena"
+    },
+    "SLL": {
+        "code": "SLL",
+        "value": 22652.001967132,
+        "name": "Sierra Leonean Leone",
+        "country": "Sierra Leone"
+    },
+    "SOL": {
+        "code": "SOL",
+        "value": 0.0047521155,
+        "name": "Solana",
+        "country": "N/A"
+    },
+    "SOS": {
+        "code": "SOS",
+        "value": 574.7683954375,
+        "name": "Somali Shilling",
+        "country": "Somalia"
+    },
+    "SRD": {
+        "code": "SRD",
+        "value": 34.7124256051,
+        "name": "Surinamese Dollar",
+        "country": "Suriname"
+    },
+    "STD": {
+        "code": "STD",
+        "value": 23118.831149217,
+        "name": "S\u00e3o Tom\u00e9 and Pr\u00edncipe Dobra (pre-2018)",
+        "country": "S\u00e3o Tom\u00e9 and Pr\u00edncipe"
+    },
+    "STN": {
+        "code": "STN",
+        "value": 23.1188257324,
+        "name": "S\u00e3o Tom\u00e9 and Pr\u00edncipe Dobra",
+        "country": "S\u00e3o Tom\u00e9 and Pr\u00edncipe"
+    },
+    "SVC": {
+        "code": "SVC",
+        "value": 8.75,
+        "name": "Salvadoran Col\u00f3n",
+        "country": "El Salvador"
+    },
+    "SYP": {
+        "code": "SYP",
+        "value": 13042.15609121,
+        "name": "Syrian Pound",
+        "country": "Syria"
+    },
+    "SZL": {
+        "code": "SZL",
+        "value": 17.5882417849,
+        "name": "Swazi Lilangeni",
+        "country": "Eswatini"
+    },
+    "THB": {
+        "code": "THB",
+        "value": 34.2382937589,
+        "name": "Thai Baht",
+        "country": "Thailand"
+    },
+    "TJS": {
+        "code": "TJS",
+        "value": 10.6872718535,
+        "name": "Tajikistani Somoni",
+        "country": "Tajikistan"
+    },
+    "TMT": {
+        "code": "TMT",
+        "value": 3.5,
+        "name": "Turkmenistani Manat",
+        "country": "Turkmenistan"
+    },
+    "TND": {
+        "code": "TND",
+        "value": 3.1039404025,
+        "name": "Tunisian Dinar",
+        "country": "Tunisia"
+    },
+    "TOP": {
+        "code": "TOP",
+        "value": 2.3522504283,
+        "name": "Tongan Pa\u02bbanga",
+        "country": "Tonga"
+    },
+    "TRY": {
+        "code": "TRY",
+        "value": 34.3450539231,
+        "name": "Turkish Lira",
+        "country": "Turkey"
+    },
+    "TTD": {
+        "code": "TTD",
+        "value": 6.7809309232,
+        "name": "Trinidad and Tobago Dollar",
+        "country": "Trinidad and Tobago"
+    },
+    "TWD": {
+        "code": "TWD",
+        "value": 32.2689934889,
+        "name": "New Taiwan Dollar",
+        "country": "Taiwan"
+    },
+    "TZS": {
+        "code": "TZS",
+        "value": 2660.5999067153,
+        "name": "Tanzanian Shilling",
+        "country": "Tanzania"
+    },
+    "UAH": {
+        "code": "UAH",
+        "value": 41.4572347628,
+        "name": "Ukrainian Hryvnia",
+        "country": "Ukraine"
+    },
+    "UGX": {
+        "code": "UGX",
+        "value": 3656.3030253358,
+        "name": "Ugandan Shilling",
+        "country": "Uganda"
+    },
+    "USD": {
+        "code": "USD",
+        "value": 1,
+        "name": "US Dollar",
+        "country": "United States"
+    },
+    "USDC": {
+        "code": "USDC",
+        "value": 1.0015286756,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "USDT": {
+        "code": "USDT",
+        "value": 0.9998620476,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "UYU": {
+        "code": "UYU",
+        "value": 41.7504277919,
+        "name": "Uruguayan Peso",
+        "country": "Uruguay"
+    },
+    "UZS": {
+        "code": "UZS",
+        "value": 12813.036998786,
+        "name": "Uzbekistani Som",
+        "country": "Uzbekistan"
+    },
+    "VEF": {
+        "code": "VEF",
+        "value": 4459114.9895708,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "VES": {
+        "code": "VES",
+        "value": 44.5911447234,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "VND": {
+        "code": "VND",
+        "value": 25245.23769979,
+        "name": "Vietnamese Dong",
+        "country": "Vietnam"
+    },
+    "VUV": {
+        "code": "VUV",
+        "value": 119.5802642663,
+        "name": "Vanuatu Vatu",
+        "country": "Vanuatu"
+    },
+    "WST": {
+        "code": "WST",
+        "value": 2.7305133358,
+        "name": "Samoan Tala",
+        "country": "Samoa"
+    },
+    "XAF": {
+        "code": "XAF",
+        "value": 612.1994048463,
+        "name": "Central African CFA Franc",
+        "country": "Central African CFA Franc"
+    },
+    "XAG": {
+        "code": "XAG",
+        "value": 0.0318431881,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "XAU": {
+        "code": "XAU",
+        "value": 0.0003724806,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "XCD": {
+        "code": "XCD",
+        "value": 2.7,
+        "name": "East Caribbean Dollar",
+        "country": "East Caribbean Dollar"
+    },
+    "XDR": {
+        "code": "XDR",
+        "value": 0.7531001338,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "XOF": {
+        "code": "XOF",
+        "value": 612.1994041665,
+        "name": "West African CFA Franc",
+        "country": "West African CFA Franc"
+    },
+    "XPD": {
+        "code": "XPD",
+        "value": 0.0010039331,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "XPF": {
+        "code": "XPF",
+        "value": 111.2811118466,
+        "name": "CFP Franc",
+        "country": "CFP Franc"
+    },
+    "XPT": {
+        "code": "XPT",
+        "value": 0.0010233944,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "XRP": {
+        "code": "XRP",
+        "value": 1.6977893143,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "YER": {
+        "code": "YER",
+        "value": 249.2432405606,
+        "name": "Yemeni Rial",
+        "country": "Yemen"
+    },
+    "ZAR": {
+        "code": "ZAR",
+        "value": 17.6189825073,
+        "name": "South African Rand",
+        "country": "South Africa"
+    },
+    "ZMK": {
+        "code": "ZMK",
+        "value": 9001.2,
+        "name": "Unknown Currency",
+        "country": "Unknown Country"
+    },
+    "ZMW": {
+        "code": "ZMW",
+        "value": 27.276773941,
+        "name": "Zambian Kwacha",
+        "country": "Zambia"
+    },
+    "ZWL": {
+        "code": "ZWL",
+        "value": 65325.362662109,
+        "name": "Zimbabwean Dollar",
+        "country": "Zimbabwe"
+    }
+}

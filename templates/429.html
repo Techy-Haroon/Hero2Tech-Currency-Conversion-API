@@ -1,0 +1,55 @@
+<!-- 429.html -->
+<!DOCTYPE html>
+<title>Too Many Requests</title>
+{% extends "base.html" %}
+{% block content %}
+<style>
+    li {
+        list-style-type: none;
+        font-size: 1.3em;
+    }
+</style>
+<div class="error-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% set latest_message = messages[0] %}
+        <ul class="flashes">
+            <li class="flash {{ latest_message[0] }}">{% autoescape false %}{{ latest_message[1] }}{% endautoescape %}</li>
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <h1>Too Many Requests</h1>
+    <p>{{ message }}</p>
+    {% if rate_limits %}
+        <ul>
+        {% for endpoint, unblock_time in rate_limits.items() %}
+            <li>
+                Gateway /{{ endpoint|capitalize }}, Unblock Time: 
+                <span id="unblock-time-{{ loop.index }}" data-unblock-time="{{ unblock_time }}"></span>
+            </li>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+    // Function to convert a UTC time string to a local time string
+    function convertUTCToLocal(utcStr) {
+        var utcDate = new Date(utcStr);
+        return utcDate.toLocaleString(); // Converts to the local time zone
+    }
+
+    // Get the unblock time string from the data attribute
+    var unblockElement = document.getElementById('unblock-time-{{ loop.index }}');
+    if (unblockElement) {
+        var unblockTimeStr = unblockElement.getAttribute('data-unblock-time');
+        if (unblockTimeStr) {
+            var localTimeStr = convertUTCToLocal(unblockTimeStr);
+            // Update the unblock time element with the local time string
+            unblockElement.textContent = localTimeStr;
+        }
+    }
+});
+
+            </script>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

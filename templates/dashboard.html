@@ -1,0 +1,234 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<title>Dashboard - Hero2Tech</title>
+<script nonce="{{ csp_nonce() }}" type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script nonce="{{ csp_nonce() }}">
+document.addEventListener('DOMContentLoaded', () => {
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Type', 'Count'],
+            ['Used Hits', {{ total_limit - remaining_hits }}],
+            ['Remaining Hits', {{ remaining_hits }}]
+        ]);
+        var isDarkMode = document.body.classList.contains('dark');
+    
+        var options = {
+            title: 'API Usage',
+            pieHole: 0.4,
+            width: 300,
+            height: 150,
+            backgroundColor: isDarkMode ? '#1f1f1f' : '#ffffff',
+            titleTextStyle: { color: isDarkMode ? '#e0e0e0' : '#000000' },
+            legend: { textStyle: { color: isDarkMode ? '#e0e0e0' : '#000000' } },
+            pieSliceTextStyle: { color: isDarkMode ? '#e0e0e0' : '#000000' },
+            colors: ['#3366cc', '#dc3912'],
+            chartArea: { backgroundColor: isDarkMode ? '#1f1f1f' : '#ffffff' }
+        };
+    
+        var chart = new google.visualization.PieChart(document.getElementById('apiUsageChart'));
+        chart.draw(data, options);
+        setTimeout(() => applyTooltipStyle(), 500);
+    }
+    function applyTooltipStyle() {
+    var isDarkMode = document.body.classList.contains('dark');
+
+    // Directly access the footer and its siblings
+    const tooltipElement = document.body.lastElementChild?.querySelector('div');
+    if (tooltipElement) {
+        // Apply the background style based on dark mode
+        tooltipElement.style.background = isDarkMode ? '#1a1818' : 'infobackground';
+        tooltipElement.style.borderRadius = '50px';
+        tooltipElement.style.padding = '3px';
+        return true;
+    }
+    return false;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Create a MutationObserver to watch for changes in the DOM
+    const observer = new MutationObserver((mutations) => {
+        if (applyTooltipStyle()) {
+            // If the function executes successfully, disconnect the observer
+            observer.disconnect();
+        }
+    });
+
+    // Start observing the document body for changes
+    observer.observe(document.body, { childList: true, subtree: true });
+});
+setTimeout(() => {
+  drawChart();
+  const observer = new MutationObserver((mutations) => {
+        if (applyTooltipStyle()) {
+            observer.disconnect();
+        }
+    });
+    // Start observing the document body for changes
+    observer.observe(document.body, { childList: true, subtree: true });
+}, "500");
+document.getElementById('darkModeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark');
+    drawChart();
+    const observer = new MutationObserver((mutations) => {
+        if (applyTooltipStyle()) {
+            observer.disconnect();
+        }
+    });
+    // Start observing the document body for changes
+    observer.observe(document.body, { childList: true, subtree: true });
+    // Call any additional functions if needed
+});
+document.getElementById('convertIt').addEventListener('click', function(event) {
+    // Prevent the default form submission
+    event.preventDefault();
+    convertCurrency();
+});
+const api_key = "{{ session['api_key'] }}";
+let lastRequest = {
+    from_currency: null,
+    to_currency: null,
+    amount: null,
+    response: null
+};
+function convertCurrency() {
+    const from_currency = document.getElementById('from_currency').value.replace(/\s/g, "");
+    const to_currency = document.getElementById('to_currency').value.replace(/\s/g, "");
+    const amount = document.getElementById('amount').value.replace(/\s/g, "");
+    document.getElementById('response').textContent = 'Converting...';
+    if (from_currency == "" || to_currency == "" || amount == ""){
+            document.getElementById('response').textContent = "One or more field(s) is empty.";
+            return;
+        }
+    if (
+        lastRequest.from_currency === from_currency &&
+        lastRequest.to_currency === to_currency &&
+        lastRequest.amount === amount
+    ) {
+        setTimeout(() => {
+            document.getElementById('response').textContent = JSON.stringify(lastRequest.response, null, 2);
+        }, 200);
+        return;
+    }
+
+    const url = "/convert";
+    const headers = {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${api_key}`
+    };
+    const data = {
+        from_currency: from_currency,
+        to_currency: to_currency,
+        amount: parseFloat(amount)
+    };
+
+    fetch(url, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        lastRequest = {
+            from_currency: from_currency,
+            to_currency: to_currency,
+            amount: amount,
+            response: data
+        };
+        dat = JSON.stringify(data, null, 2);
+        if (dat == '{\n  "error": "invalid api key"\n}'){
+            window.location.href = "{{ url_for('update_api_key') }}";
+        }
+        document.getElementById('response').textContent = dat;
+    })
+    .catch(error => {
+        document.getElementById('response').textContent = `Sorry, An Error occured. Logging out and logging in again might help.`;
+    });
+}
+});
+</script>
+<style nonce="{{ csp_nonce() }}">
+    #apiUsageChart {
+        width: 300px;
+        height: 150px;
+    }
+    #conversionForm {
+        margin-top: 25px;
+    }
+</style>
+<meta http-equiv="Cache-Control" content="public, max-age=604800">
+{% extends 'base.html' %}
+{% block content %}
+<section class="dashboard">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% set latest_message = messages[0] %}
+            <ul class="flashes">
+                <li class="flash {{ latest_message[0] }}">{% autoescape false %}{{ latest_message[1] }}{% endautoescape %}</li>
+            </ul>
+        {% endif %}
+        {% endwith %}
+
+        <h2 class="repHeading">Dashboard</h2>
+        <div class="user-info">
+            <a class="btn btn-primary" href="/dashboard/update-profile">Update Profile</a>
+            <p>Welcome, <span class="data">{{ session.get('username') }}!</span></p>
+            <p>Email: <span class="data">{{ session.get('email') }}</span></p>
+            <p>Account Created: <span class="data">{{ session.get('created_at') }}</span></p>
+        </div>
+<hr>
+        <div class="api-section">
+            <h3>API Keys</h3>
+            <a class="btn btn-primary" href="/dashboard/api-keys">Manage API Keys</a>
+        </div>
+
+        <div class="api-usage-section">
+            <h3>API Usage</h3>
+            <h4>{{ start_timestamp }}</h4>
+            <p>Total Limit: {{ total_limit }}</p>
+            <p>Used Hits: {{ usage_count }}</p>
+            <p>Remaining Hits: {{ remaining_hits }}</p>
+            <p class="data note">*Upper Hits reset after 1 Month</p>
+            <div id="apiUsageChart"></div>
+            <p><span class="data note">* Upper Chart Updates every 5 Minutes.</span></p>
+        </div>
+        <hr>
+        <div class="container">
+        <div class="conversion-tool">
+            <h3>Try it out</h3>
+            <p>Enter the details below and click the button to simulate a conversion request:</p>
+                <span class="data note">
+                    * This will be counted as Your API Usage.
+                </span>
+            <form id="conversionForm" onsubmit="return false;">
+                <label for="from_currency">From Currency:</label>
+                <input type="text" id="from_currency" placeholder="e.g., USD" required><br><br>
+
+                <label for="to_currency">To Currency:</label>
+                <input type="text" id="to_currency" placeholder="e.g., PKR" required><br><br>
+
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" placeholder="e.g., 100" required><br><br>
+
+                <button id="convertIt" type="submit" class="btn">Convert Currency</button>
+            </form>
+            <pre id="response"></pre>
+        </div>
+        </div>
+</section>
+<section class="patreon-offer">
+    <h2>Unlock More with Our Patreon Membership!</h2>
+    <p>Upgrade your API experience by joining our Patreon community. With a membership, you'll enjoy:</p>
+    <ul>
+        <li><strong>10,000 API Requests per Month:</strong> Increase your limit from 1,000 to 10,000 requests each month, perfect for high-demand applications.</li>
+        <li><strong>10 API Keys & 30/day</strong> Get 10 API Keys at a time & Generation of 30 API keys/day.</li>
+        <li><strong>Priority Support:</strong> Get faster responses and dedicated support to assist with any issues or questions.</li>
+        <li><strong>Exclusive Perks:</strong> Access special features and updates before anyone else.</li>
+        <li><strong>Support Development:</strong> Help us continue to improve and expand our services by supporting our work.</li>
+    </ul>
+    <p>Ready to get more from your API?</p>
+    <a href="https://www.patreon.com/Hero2Tech" target="_blank" class="btn">Join Us on Patreon</a>
+</section>
+{% endblock %}

@@ -1,0 +1,40 @@
+<!-- plans.html -->
+<!DOCTYPE html>
+<title>Currency API Plans - Hero2Tech</title>
+<link rel="stylesheet" href="/static/plans.css">
+{% extends 'base.html' %}
+{% block content %}
+<section class="plans">
+    <div class="container">
+        <h2>Select the Ideal Plan for Your Currency API Needs</h2>
+        <p>At Hero2Tech, we understand that different users have different needs. Whether you're just starting out, working on a personal project, or scaling up for a large enterprise, we've got a plan that suits you. Our plans are designed to offer flexibility and scalability so you can focus on what matters most – your project.</p>
+        <p>Explore our plans below and find the one that best aligns with your goals:</p>
+        
+        <div class="plan-container">
+            <div class="plan-item">
+                <h3>Free Plan</h3>
+                <p>Our Free Plan is perfect for individuals, hobbyists, and small projects. It's a great way to explore our API and get started without any financial commitment.</p>
+                <ul>
+                    <li><strong>3 API Keys</strong> available simultaneously</li>
+                    <li><strong>1000 requests</strong> allowed per month</li>
+                    <li><strong>10 API Key Generations</strong> permitted per day</li>
+                </ul>
+                <a href="/signup" class="btn">Sign Up for Free</a>
+            </div>
+            
+            <div class="plan-item featured">
+                <h3>Patreon Plan</h3>
+                <p>The Patreon Plan is designed for more intensive use, offering greater limits and additional benefits. Ideal for growing projects, businesses, or power users who need more flexibility and higher usage.</p>
+                <ul>
+                    <li><strong>10 API Keys</strong> available simultaneously</li>
+                    <li><strong>10,000 requests</strong> allowed per month</li>
+                    <li><strong>30 API Key Generations</strong> permitted per day</li>
+                </ul>
+                <a href="https://www.patreon.com/Hero2Tech" target="_blank" class="btn btn-primary">$5 - Subscribe on Patreon</a>
+            </div>
+        </div>
+        
+        <p>Need more information or have specific requirements? Feel free to <a href="/contact">contact us</a> for personalized assistance. We're here to help you find the perfect solution for your needs.</p>
+    </div>
+</section>
+{% endblock %}

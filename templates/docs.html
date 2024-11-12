@@ -1,0 +1,19 @@
+<!-- docs.html -->
+<!DOCTYPE html>
+<title>API Documentation - Hero2Tech</title>
+<link rel="stylesheet" href="/static/docs.css">
+{% extends 'docs_base.html' %}
+{% block content %}
+    <div class="container">
+        <h1>Welcome to the API Documentation</h1>
+        <p>This API documentation provides details on the endpoints available for converting currencies, retrieving currency rates, and more.</p>
+        <p>You can find documentation for the following endpoints:</p>
+        <ul>
+            <li><a href="/docs/convert">/convert</a>: Convert a specific amount between two currencies.</li>
+            <li><a href="/docs/convert_currencies">/convert_currencies</a>: Convert a base currency to multiple target currencies.</li>
+            <li><a href="/docs/get_currency_rates">/get_currency_rates</a>: Retrieve the latest rates for all available currencies.</li>
+        </ul>
+        <p>For additional information on response codes and using the API, please visit the <a href="/docs/response_codes">Response Codes</a> page.</p>
+        <p>If you're interested in accessing more features, check out our <a href="/docs/patreon">Patreon Membership</a> or <a href="/plans">Plans</a> for enhanced limits and priority support.</p>
+    </div>
+{% endblock %}

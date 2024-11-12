@@ -1,0 +1,81 @@
+<!-- currency_api.html -->
+<!DOCTYPE html>
+<title>Currency API - Hero2Tech</title>
+<link rel="stylesheet" href="/static/api-main.css">
+{% extends 'base.html' %}
+{% block content %}
+<section class="functional">
+    <div class="container">
+        <h2>Currency API - Powering Your Financial Applications</h2>
+        
+        <p>Welcome to our Currency API, the ultimate solution for developers and businesses seeking reliable and real-time exchange rate data. Whether you're building a global e-commerce platform, financial application, or simply need accurate currency conversion for your project, our API is designed to meet your needs with precision and ease.</p>
+        
+        <h3>Why Choose Our Currency API?</h3>
+        <div class="features">
+            <div class="feature-item">
+                <strong>Real-Time Exchange Rates:</strong>
+                <p>Get access to the latest exchange rates for over 150 currencies, updated every minute to ensure your data is always current.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Secure and Reliable:</strong>
+                <p>Our API is built with security in mind, ensuring that your data is transmitted and received safely, backed by industry-standard encryption.</p>
+            </div>
+            <div class="feature-item">
+                <strong>High Availability:</strong>
+                <p>With 99.9% uptime, our API is available whenever you need it, ensuring that your application runs smoothly without interruption.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Flexible Integration:</strong>
+                <p>Whether you're using JavaScript, Python, or any other programming language, our API is easy to integrate with detailed documentation and examples provided.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Customizable Requests:</strong>
+                <p>Tailor your API requests to get exactly the data you need, whether it's historical data, specific currency pairs, or aggregated data.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Scalable:</strong>
+                <p>From small projects to enterprise-level applications, our API scales with your needs, offering different plans to suit your usage.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Comprehensive Documentation:</strong>
+                <p>Our user-friendly documentation provides clear instructions, examples, and best practices, making integration a breeze.</p>
+            </div>
+            <div class="feature-item">
+                <strong>Responsive Support:</strong>
+                <p>Our dedicated support team is available to assist you with any questions or issues you may encounter, ensuring a smooth experience.</p>
+            </div>
+        </div>
+        <h3>What Sets Us Apart?</h3>
+        <div class="comparison">
+            <div class="comparison-item">
+                <strong>Our API (Free Plan):</strong>
+                <ul>
+                    <li>1000 requests/month</li>
+                    <li>3 API keys per account</li>
+                    <li>15 key generations daily</li>
+                    <li>Specific API key deletion supported</li>
+                </ul>
+            </div>
+            <div class="comparison-item">
+                <strong>Competitors (Free Plan):</strong>
+                <ul>
+                    <li>300 requests/month</li>
+                    <li>1 API key per account</li>
+                    <li>No key generation feature</li>
+                    <li>No key deletion feature</li>
+                </ul>
+            </div>
+        </div>
+        <h3>Join Thousands of Developers and Businesses Worldwide</h3>
+        <p>Our Currency API is trusted by developers and businesses around the globe, powering everything from small apps to large financial systems. Don't miss out on the opportunity to enhance your application with real-time, accurate exchange rate data.</p>
+        <h3>Get Started Today</h3>
+        {% if session["user_id"] %}
+        <p>Open Dashboard and try now! <a href="/dashboard">Dashboard</a></p>
+        {% elif session["in_process"] %}
+        <p>Ready to take your application to the next level? Complete your Sign Up and start today! <a href="/complete-signup">Complete Signup</a></p>
+        {% else %}
+        <p>Ready to take your application to the next level? Choose a Plan which suits you and start today! <a href="/plans">Plans</a></p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

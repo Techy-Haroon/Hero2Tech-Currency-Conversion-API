@@ -1,0 +1,33 @@
+<!-- request_feature.html -->
+<!DOCTYPE html>
+<title>Request a Feature</title>
+<script src="https://hcaptcha.com/1/api.js" async defer></script>
+{% extends "base.html" %}
+
+{% block content %}
+<section class="form-msg">
+  <h1>Request a Feature</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% set latest_message = messages[0] %}
+        <ul class="flashes">
+            <li class="flash {{ latest_message[0] }}">{% autoescape false %}{{ latest_message[1] }}{% endautoescape %}</li>
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <hr>
+  <form method="POST">
+      {{ form.hidden_tag() }}
+      <div>
+          {{ form.name.label }}<br>
+          {{ form.name }}<br>
+          {{ form.email.label }}<br>
+          {{ form.email }}<br>
+          {{ form.message.label }}<br>
+          <textarea class="message-form" id="message" minlength="10" name="message" required></textarea><br>
+          <div class="h-captcha" data-sitekey="{{ hcaptcha_site_key }}" data-theme="dark"></div>
+          <input class="btn" id="submit" name="submit" type="submit" value="Submit Report">
+      </div>
+  </form>
+</section>
+{% endblock %}

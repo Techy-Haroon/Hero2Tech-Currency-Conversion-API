@@ -1,0 +1,148 @@
+<!-- convert_currencies.html -->
+<!DOCTYPE html>
+<title>Convert Currencies from Base to Target - API Documentation - Hero2Tech</title>
+{% extends 'docs_base.html' %}
+{% block content %}
+    <div class="container">
+        <h1>API Documentation</h1>
+        <h2>Endpoint: <code>/convert_currencies</code></h2>
+        <h3>Description</h3>
+        <p>The <code>/convert_currencies</code> endpoint allows users to convert an amount from a base currency to multiple target currencies using the latest exchange rates. The endpoint supports both GET and POST methods, providing flexibility in how parameters are passed.</p>
+        
+        <h3>Methods</h3>
+        <p><code>GET</code> and <code>POST</code></p>
+        
+        <h3>URL</h3>
+        <p><code>/convert_currencies</code></p>
+        
+        <h3>Request Headers</h3>
+        <ul>
+            <li><code>Content-Type: application/json</code> (for POST requests)</li>
+            <li><code>Authorization: Bearer &lt;your_api_key&gt;</code> (optional for GET, required for POST)</li>
+        </ul>
+        
+        <h3>Request Parameters</h3>
+        <p>Parameters can be passed in the URL (for GET) or JSON body (for POST). If using the Authorization header, parameters must be in the JSON body. Otherwise, they can be passed in the URL.</p>
+        <ul>
+            <li><code>api_key</code> (string, required if Authorization header is absent): The API key associated with your account.</li>
+            <li><code>base_currency</code> (string, required): The base currency code to convert from (e.g., <code>USD</code>).</li>
+            <li><code>convert_currencies</code> (string, required): A comma-separated list of target currency codes (e.g., <code>PKR,EUR,INR</code>).</li>
+            <li><code>amount</code> (float, optional): The amount to convert. Defaults to 1 if not provided.</li>
+        </ul>
+        
+        <h3>Response</h3>
+        <ul>
+            <li><code>200 OK</code>: Returns a JSON object containing conversion results for each target currency.</li>
+            <li><code>400 Bad Request</code>: Returned if the request is missing required parameters or if they are invalid.</li>
+            <li><code>401 Unauthorized</code>: Returned if the API key is missing or invalid.</li>
+            <li><code>403 Forbidden</code>: Returned if the request limit has been reached.</li>
+        </ul>
+        
+        <h3>Response Body Example</h3>
+        <pre><code>{
+  "PKR": 278.63,
+  "EUR": 84.00,
+  "INR": 7380.00
+}</code></pre>
+        
+        <h3>Example Code</h3>
+        {% if session["user_id"] %}
+        <p><span class="data note">* Below Examples contain your API Key.</span></p>
+        {% endif %}
+        
+        <h4>Python Example (POST with Authorization Header)</h4>
+        <pre><code>import requests
+{% if session["user_id"] %}
+api_key = "{{ session['api_key'] }}"
+{% else %}
+api_key = "your_api_key"
+{% endif %}
+base_currency = "USD"
+convert_currencies = "PKR,EUR,INR"
+amount = 100
+url = "https://www.hero2tech.com/convert_currencies"
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": f"Bearer {api_key}"
+}
+data = {
+    "base_currency": base_currency,
+    "convert_currencies": convert_currencies,
+    "amount": amount
+}
+response = requests.post(url, json=data, headers=headers)
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Error: {response.status_code}, {response.text}")
+</code></pre>
+
+        <h4>Python Example (GET with URL Parameters)</h4>
+        <pre><code>import requests
+{% if session["user_id"] %}
+api_key = "{{ session['api_key'] }}"
+{% else %}
+api_key = "your_api_key"
+{% endif %}
+base_currency = "USD"
+convert_currencies = "PKR,EUR,INR"
+amount = 100
+url = f"https://www.hero2tech.com/convert_currencies?api_key={api_key}&base_currency={base_currency}&convert_currencies={convert_currencies}&amount={amount}"
+response = requests.get(url)
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Error: {response.status_code}, {response.text}")
+</code></pre>
+
+        <h4>JavaScript Example (POST with Authorization Header)</h4>
+        <pre><code>{% if session["user_id"] %}
+const api_key = "{{ session['api_key'] }}";
+{% else %}
+const api_key = "your_api_key";
+{% endif %}
+const base_currency = "USD";
+const convert_currencies = "PKR,EUR,INR";
+const amount = 100;
+const url = "https://www.hero2tech.com/convert_currencies";
+const headers = {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${api_key}`
+};
+const data = {
+    base_currency: base_currency,
+    convert_currencies: convert_currencies,
+    amount: amount
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+</code></pre>
+
+        <h4>JavaScript Example (GET with URL Parameters)</h4>
+        <pre><code>{% if session["user_id"] %}
+const api_key = "{{ session['api_key'] }}";
+{% else %}
+const api_key = "your_api_key";
+{% endif %}
+const base_currency = "USD";
+const convert_currencies = "PKR,EUR,INR";
+const amount = 100;
+const url = `https://www.hero2tech.com/convert_currencies?api_key=${api_key}&base_currency=${base_currency}&convert_currencies=${convert_currencies}&amount=${amount}`;
+
+fetch(url, {
+    method: "GET"
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+</code></pre>
+        {% include 'docs_go.html' %}
+    </div>
+{% endblock %}

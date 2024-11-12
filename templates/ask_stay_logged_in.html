@@ -1,0 +1,15 @@
+<!-- ask_stay_logged_in.html -->
+<title>Stay Logged In? - Hero2Tech</title>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="login">
+        <div class="alert alert-info">
+            <h4 class="alert-heading">Stay Logged In?</h4>
+            <p>Do you want to stay logged in for a longer period (Usually 24 Hours, may change upon situations)?</p>
+            <form method="post">
+                <button type="submit" name="stay_logged_in" class="btn btn-primary">Yes</button><br>
+                <button type="submit" id="go-dashboard" class="btn btn-primary">No</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

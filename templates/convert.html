@@ -1,0 +1,143 @@
+<!-- convert.html -->
+<!DOCTYPE html>
+<title>Convert Currencies from one to other - API Documentation - Hero2Tech</title>
+{% extends 'docs_base.html' %} 
+{% block content %}
+    <div class="container">
+        <h1>API Documentation</h1>
+        <h2>Endpoint: <code>/convert</code></h2>
+        <h3>Description</h3>
+        <p>The <code>/convert</code> endpoint allows users to convert currency from one type to another using the latest exchange rates. The endpoint supports both GET and POST methods, providing flexibility in how parameters are passed.</p>
+        <h3>Methods</h3>
+        <p><code>GET</code> and <code>POST</code></p>
+        <h3>URL</h3>
+        <p><code>/convert</code></p>
+        <h3>Request Headers</h3>
+        <ul>
+            <li><code>Content-Type: application/json</code> (for POST requests)</li>
+            <li><code>Authorization: Bearer &lt;your_api_key&gt;</code> (optional for GET, required for POST)</li>
+        </ul>
+        <h3>Request Parameters</h3>
+        <p>Parameters can be passed in the URL (for GET) or JSON body (for POST). If using the Authorization header, parameters must be in the JSON body. Otherwise, they can be passed in the URL.</p>
+        <ul>
+            <li><code>api_key</code> (string, required if Authorization header is absent): The API key associated with your account.</li>
+            <li><code>from_currency</code> (string, required): The currency code you want to convert from (e.g., <code>USD</code>).</li>
+            <li><code>to_currency</code> (string, required): The currency code you want to convert to (e.g., <code>PKR</code>).</li>
+            <li><code>amount</code> (float, required): The amount of currency you want to convert.</li>
+        </ul>
+        <h3>Response</h3>
+        <ul>
+            <li><code>200 OK</code>: Returns a JSON object containing the converted amount.</li>
+            <li><code>400 Bad Request</code>: Returned if the request is missing required parameters or if they are invalid.</li>
+            <li><code>401 Unauthorized</code>: Returned if the API key is missing or invalid.</li>
+            <li><code>403 Forbidden</code>: Returned if the request limit has been reached.</li>
+        </ul>
+        <h3>Response Body Example</h3>
+        <pre><code>{
+  "converted_amount": 278.4495478554,
+  "given_amount": 1,
+  "from_country": "United States",
+  "to_country": "Pakistan",
+  "from_code": "USD",
+  "to_code": "PKR"
+}</code></pre>
+        <h3>Example Code</h3>
+        {% if session["user_id"] %}
+        <p><span class="data note">* Below Examples contain your API Key.</span></p>
+        {% endif %}
+        <h4>Python Example (POST with Authorization Header)</h4>
+        <pre><code>import requests
+{% if session["user_id"] %}
+api_key = "{{ session['api_key'] }}"
+{% else %}
+api_key = "your_api_key"
+{% endif %}
+from_currency = "USD"
+to_currency = "PKR"
+amount = 100
+url = "https://www.hero2tech.com/convert"
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": f"Bearer {api_key}"
+}
+data = {
+    "from_currency": from_currency,
+    "to_currency": to_currency,
+    "amount": amount
+}
+response = requests.post(url, json=data, headers=headers)
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Error: {response.status_code}, {response.text}")
+</code></pre>
+
+        <h4>Python Example (GET with URL Parameters)</h4>
+        <pre><code>import requests
+{% if session["user_id"] %}
+api_key = "{{ session['api_key'] }}"
+{% else %}
+api_key = "your_api_key"
+{% endif %}
+from_currency = "USD"
+to_currency = "PKR"
+amount = 100
+url = f"https://www.hero2tech.com/convert?api_key={api_key}&from_currency={from_currency}&to_currency={to_currency}&amount={amount}"
+response = requests.get(url)
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Error: {response.status_code}, {response.text}")
+</code></pre>
+
+        <h4>JavaScript Example (POST with Authorization Header)</h4>
+        <pre><code>{% if session["user_id"] %}
+const api_key = "{{ session['api_key'] }}";
+{% else %}
+const api_key = "your_api_key";
+{% endif %}
+const from_currency = "USD";
+const to_currency = "PKR";
+const amount = 100;
+const url = "https://www.hero2tech.com/convert";
+const headers = {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${api_key}`
+};
+const data = {
+    from_currency: from_currency,
+    to_currency: to_currency,
+    amount: amount
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+</code></pre>
+
+<h4>JavaScript Example (GET with URL Parameters)</h4>
+<pre><code>{% if session["user_id"] %}
+const api_key = "{{ session['api_key'] }}";
+{% else %}
+const api_key = "your_api_key";
+{% endif %}
+const from_currency = "USD";
+const to_currency = "PKR";
+const amount = 100;
+const url = `https://www.hero2tech.com/convert?api_key=${api_key}&from_currency=${from_currency}&to_currency=${to_currency}&amount=${amount}`;
+
+fetch(url, {
+    method: "GET"
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+</code></pre>
+{% include 'docs_go.html' %}
+</div>
+{% endblock %}

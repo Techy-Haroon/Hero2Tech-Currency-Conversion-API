@@ -1,0 +1,123 @@
+<!-- get_currency_rates.html -->
+<!DOCTYPE html>
+<title>Get Currency Rates - API Documentation - Hero2Tech</title>
+<link rel="stylesheet" href="/static/docs.css">
+{% extends 'docs_base.html' %}
+{% block content %}
+    <div class="container">
+        <h1>API Documentation</h1>
+        <h2>Endpoint: <code>/get_currency_rates</code></h2>
+        <h3>Description</h3>
+        <p>The <code>/get_currency_rates</code> endpoint retrieves the current currency rates for all available currencies. This endpoint is useful for getting a snapshot of exchange rates at a given time.</p>
+        
+        <h3>Methods</h3>
+        <p><code>GET</code></p>
+        
+        <h3>URL</h3>
+        <p><code>/get_currency_rates</code></p>
+        
+        <h3>Request Headers</h3>
+        <ul>
+            <li><code>Authorization: Bearer &lt;your_api_key&gt;</code> (required if sending Authorization Header)</li>
+        </ul>
+        
+        <h3>Request Parameters</h3>
+        <p>Parameters can be passed in the URL. If using the Authorization header, then this will be ignored.</p>
+        <ul>
+            <li><code>api_key</code> (string, required if Authorization header is absent): The API key associated with your account.</li>
+        </ul>
+        
+        <h3>Response</h3>
+        <ul>
+            <li><code>200 OK</code>: Returns a JSON object containing the current rates for all currencies.</li>
+            <li><code>401 Unauthorized</code>: Returned if the API key is missing or invalid.</li>
+            <li><code>403 Forbidden</code>: Returned if the You have reached your Request Limit.</li>
+        </ul>
+        
+        <h3>Response Body Example</h3>
+        <pre><code>{
+  "USD": 1,
+  "PKR": 278.63,
+  "EUR": 0.84,
+  "INR": 7380.00,
+  150+ More Currency Rates...
+}</code></pre>
+        
+        <h3>Example Code</h3>
+        {% if session["user_id"] %}
+        <p><span class="data note">* Below Examples contain your API Key.</span></p>
+        {% endif %}
+        
+        <h4>Python Example (GET with Authorization Header)</h4>
+        <pre><code>import requests
+{% if session["user_id"] %}
+api_key = "{{ session['api_key'] }}"
+{% else %}
+api_key = "your_api_key"
+{% endif %}
+url = "https://www.hero2tech.com/get_currency_rates"
+headers = {
+    "Authorization": f"Bearer {api_key}"
+}
+
+response = requests.get(url, headers=headers)
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Error: {response.status_code}, {response.text}")
+</code></pre>
+<h4>Python Example (GET with URL Parameter)</h4>
+        <pre><code>import requests
+{% if session["user_id"] %}
+api_key = "{{ session['api_key'] }}"
+{% else %}
+api_key = "your_api_key"
+{% endif %}
+url = f"https://www.hero2tech.com/get_currency_rates?api_key={api_key}"
+
+response = requests.get(url)
+if response.status_code == 200:
+    print(response.json())
+else:
+    print(f"Error: {response.status_code}, {response.text}")
+</code></pre>
+<hr>
+<h4>JavaScript Example (GET with Authorization Header)</h4>
+        <pre><code>
+{% if session["user_id"] %}
+const api_key = "{{ session['api_key'] }}";
+{% else %}
+const api_key = "your_api_key";
+{% endif %}
+const url = "https://www.hero2tech.com/get_currency_rates";
+const headers = {
+    "Authorization": `Bearer ${api_key}`
+};
+
+fetch(url, {
+    method: "GET",
+    headers: headers
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+</code></pre>
+<h4>JavaScript Example (GET with URL Parameter)</h4>
+        <pre><code>
+{% if session["user_id"] %}
+const api_key = "{{ session['api_key'] }}";
+{% else %}
+const api_key = "your_api_key";
+{% endif %}
+const url = `https://www.hero2tech.com/get_currency_rates?api_key=${api_key}`;
+
+fetch(url, {
+    method: "GET"
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+</code></pre>
+{% include 'docs_go.html' %}
+    </div>
+{% endblock %}

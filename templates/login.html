@@ -1,0 +1,55 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<title>Login - Hero2Tech</title>
+<style nonce="{{ csp_nonce() }}">
+    .re-btn{
+        padding: 15px 20px;
+    }
+    .re-div{
+        display: inline-grid;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+{% extends "base.html" %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+<section class="login">
+    <h2>Log In</h2>
+    <div class="social-login">
+        <button class="google-btn">Log In with Google</button>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% set latest_message = messages[0] %}
+        <ul class="flashes">
+            <li class="flash {{ latest_message[0] }}">{% autoescape false %}{{ latest_message[1] }}{% endautoescape %}</li>
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <hr>
+    <form method="POST" action="{{ url_for('login') }}">
+        
+        {{ form.hidden_tag() }}
+        <div>
+            <label for="email">Email</label><br>
+            {{ form.email(size=32, class_='input-field', type="email") }}<br>
+        </div>
+        <div>
+            <label for="password">Password</label><br>
+            {{ form.password(size=32, class_='input-field') }}<br>
+        </div>
+        <div>
+            {{ form.remember_me() }} {{ form.remember_me.label }}<br>
+        </div>
+        <div>
+            <input id="submit" name="submit" type="submit" value="Log In" class="btn btn-primary">
+        </div>
+    </form>
+    <div class="forgot">
+        <a href="/forgot-password">Forgot Password?</a>
+    </div>
+</section>
+{% endblock %}

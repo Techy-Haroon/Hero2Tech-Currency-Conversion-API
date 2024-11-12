@@ -1,0 +1,33 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<title>Home - Hero2Tech</title>
+<meta description="Access up-to-date currency exchange rates through our powerful API. Ideal for developers and businesses to integrate into their applications. Come today and Join Us!">
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Hero2Tech</h1>
+            <p class="hero-subtitle">Revolutionizing Tech Solutions for a Better Tomorrow</p>
+            <a href="/currency-api" class="btn hero-btn main-btn">Explore Currency API</a>
+        </div>
+        <div class="hero-bg-animation">
+            <div class="circle"></div>
+            <div class="square"></div>
+        </div>
+    </section>
+
+    <section class="solutions">
+        <h2 class="repHeading">Our Innovative Solution</h2>
+        <div class="solution" id="currency-api">
+            <h3>Currency API</h3>
+            <p>Access up-to-date currency exchange rates through our powerful API. Ideal for developers and businesses to integrate into their applications.</p>
+            <a href="/currency-api" class="btn solution-btn" title="Explore">Learn More</a>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>Currency Conversion Documentation</h2>
+        <p>Our Currency Conversion API is easy and works on a fly. Want to know how it works?</p>
+        <a href="/docs" class="btn">Check Documentation</a>
+    </section>
+{% endblock %}

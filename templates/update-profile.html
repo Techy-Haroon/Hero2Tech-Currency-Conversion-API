@@ -1,0 +1,27 @@
+<!-- update-profile.html -->
+<!DOCTYPE html>
+<title>Update Profile - Hero2Tech</title>
+{% extends "base.html" %}
+{% block content %}
+<section class="update-profile">
+<h2>Update Profile</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% set latest_message = messages[0] %}
+        <ul class="flashes">
+            <li class="flash {{ latest_message[0] }}">{{ latest_message[1] }}</li>
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <hr>
+<form method="POST" action="{{ url_for('update_profile') }}">
+    {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label }}<br>
+                <input type="text" autocomplete="username" name="username" id="username" class="form-control" value="{{ session.get('username') }}"><br><br>
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+</form>
+<span class="data note">*You may change your username only once in 24 hours.</span>
+</section>
+{% endblock %}
