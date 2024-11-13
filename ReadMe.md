@@ -47,11 +47,12 @@ Hero2Tech is a Currency Conversion API that allows users to convert currency rat
 4. **Install Dependencies**:
    Run the following command to install the required libraries:
    ```bash
+   cd src
    pip install -r requirements.txt
    ```
 
 5. **Set up the Environment Variables**:
-   Create a `.env` file in the root directory and add the following environment variables:
+   Create a `.env` file in the src directory and add the following environment variables:
 
    ```env
    SECRET_KEY= "A Strong Secret Key"
