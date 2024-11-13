@@ -3,6 +3,7 @@
 Hero2Tech is a Currency Conversion API that allows users to convert currency rates, retrieve the latest rates, and convert from one base currency to multiple target currencies. It includes features such as user signup, login, password reset, API key management, dark and light modes, and comprehensive API documentation.
 
 ## Features
+
 - **Currency Conversion**: Convert from one currency to another.
 - **Latest Rates**: Fetch the latest currency exchange rates.
 - **Base Currency Conversion**: Convert from a base currency to multiple target currencies.
@@ -16,6 +17,7 @@ Hero2Tech is a Currency Conversion API that allows users to convert currency rat
 ## Getting Started
 
 ### Prerequisites
+
 - **Python 3.10.15**: This project has been tested with Python 3.10.15.
 - **MySQL Database**: Set up a MySQL database for the application.
 - **Google Cloud Account**: You will need a Google Cloud account to enable OAuth2 and retrieve the Google Client ID and Client Secret.
@@ -24,17 +26,20 @@ Hero2Tech is a Currency Conversion API that allows users to convert currency rat
 ### Setup
 
 1. **Clone the Repository**:
+
    ```bash
    git clone https://github.com/Techy-Haroon/Hero2Tech-Currency-Conversion-API.git
    cd Hero2Tech-Currency-Conversion-API
    ```
 
 2. **Create a Virtual Environment**:
+
    ```bash
    python3 -m venv venv
    ```
 
 3. **Activate the Virtual Environment**:
+
    - On Windows:
      ```bash
      .\venv\Scripts\activate
@@ -46,6 +51,7 @@ Hero2Tech is a Currency Conversion API that allows users to convert currency rat
 
 4. **Install Dependencies**:
    Run the following command to install the required libraries:
+
    ```bash
    cd src
    pip install -r requirements.txt
@@ -85,6 +91,7 @@ Hero2Tech is a Currency Conversion API that allows users to convert currency rat
 - **MAIL_USERNAME** and **MAIL_PASSWORD**: Your email credentials.
 - **PERMANENT_SESSION_LIFETIME_HOURS**: The time (in hours) a session remains valid (default is 24).
 - **SESSION_COOKIE_SECURE**, **SESSION_COOKIE_HTTPONLY**, **REMEMBER_COOKIE_SECURE**, **REMEMBER_COOKIE_HTTPONLY**: These settings ensure that your cookies are secure and not accessible via JavaScript.
+- **FORCE_HTTPS**: This is setting whether you want to force HTTPS in your app or not. You should ideally set it to False on Development server but True on Production Server. You can set it to True on Development server only if you have certificate on it. Otherwise, you will get error on loading page and it won't work.
 - **DEBUG** and **TESTING**: These settings control whether the application runs in debugging or testing mode.
 - **GOOGLE_CLIENT_ID** and **GOOGLE_CLIENT_SECRET**: The credentials obtained from Google Cloud for OAuth2 login.
 - **HCAPTCHA_SITE_KEY** and **HCAPTCHA_SECRET_KEY**: Your hCaptcha credentials for form security.
@@ -132,6 +139,7 @@ The SQL file to set up your database is located in the `db/` folder of this proj
 ### Configure Currency Fetcher
 
 Open `currency_fetcher.py` and locate the function:
+
 ```python
 def fetch_and_update_currencies():
     # implement your method to fetch_and_update_currencies.json
@@ -139,6 +147,7 @@ def fetch_and_update_currencies():
 ```
 
 You need to implement the function to fetch the currency rates and update them. The rates should be in the following format:
+
 ```json
 {
     "ADA": {
@@ -158,6 +167,7 @@ You need to implement the function to fetch the currency rates and update them. 
 ```
 
 You can also utilize the following mappings for currency names and countries:
+
 ```python
 CURRENCY_NAMES = {
     "ADA": "Cardano",
