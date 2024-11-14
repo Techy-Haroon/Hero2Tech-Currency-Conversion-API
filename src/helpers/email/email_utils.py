@@ -21,7 +21,7 @@
 
 def generate_reset_email_content(reset_url):
     # Read the HTML template
-    with open("reset_password_template.html", "r", encoding="utf-8") as file:
+    with open("helpers/email/reset_password_template.html", "r", encoding="utf-8") as file:
         template = file.read()
     
     # Replace the placeholder with the actual reset URL
@@ -31,7 +31,7 @@ def generate_reset_email_content(reset_url):
 
 def generate_email_confirmation_content(confirmation_url):
     # Read the HTML template
-    with open("email_confirmation_template.html", "r", encoding="utf-8") as file:
+    with open("helpers/email/email_confirmation_template.html", "r", encoding="utf-8") as file:
         template = file.read()
     
     # Replace the placeholder with the actual confirmation URL

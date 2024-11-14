@@ -31,7 +31,9 @@ CURRENCY_COUNTRIES = {"ADA": "N/A","AED": "United Arab Emirates","AFN": "Afghani
 
 
 def fetch_and_update_currencies():
-    # implement your method to fetch_and_update_currencies.json
+    # implement your method to fetch_and_update_currencies
+    # You will need to write into currencies.json and return_currencies.json present in current directory
+    # Make sure to use /helpers/currencies/file.extension to avoid errors
     pass
 
 def main():

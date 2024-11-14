@@ -46,12 +46,11 @@ from flask_limiter.util import get_remote_address
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask_caching import Cache
 from flask_talisman import Talisman
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
-from wtforms.validators import DataRequired, Email, Length, Regexp
 from itsdangerous import URLSafeTimedSerializer
 from dotenv import load_dotenv
 from bs4 import BeautifulSoup
-from email_utils import (
+from helpers.db.db_init import db
+from helpers.email.email_utils import (
     generate_reset_email_content,
     generate_email_confirmation_content,
 )
@@ -95,7 +94,7 @@ app.config["TESTING"] = os.getenv("TESTING") == "True"
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # 16 MB
 
 serializer = URLSafeTimedSerializer(app.config["SECRET_KEY"])
-db = SQLAlchemy(app)
+db.init_app(app)
 mail = Mail(app)
 
 cache = Cache(config={"CACHE_TYPE": "simple"})
@@ -150,326 +149,9 @@ talisman = Talisman(
 scheduler = BackgroundScheduler()
 scheduler.start()
 
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(150), nullable=False, unique=True)
-    email = db.Column(db.String(150), nullable=False, unique=True)
-    password = db.Column(db.String(150), nullable=False)
-    social_signup = db.Column(db.Boolean, default=False)
-    max_api_key = db.Column(db.Integer, default=3)
-    created_at = db.Column(
-        db.TIMESTAMP, server_default=func.now(), nullable=False
-    )  # (This time relies on server time zone e.g., UTC+2:00)
-    confirmation_token = db.Column(db.String(100), nullable=True)
-    confirmation_token_expiration = db.Column(db.DateTime, nullable=True)
-    confirmed = db.Column(db.Boolean, default=False)
-    ip_signup = db.Column(db.String(45), nullable=True)
-    ip_last = db.Column(db.String(45), nullable=True)
-    first_name = db.Column(db.Boolean, default=False)
-    name_changed_at = db.Column(db.DateTime, nullable=True)
-    reset_token = db.Column(db.String(100), nullable=True)
-    reset_token_expiration = db.Column(db.DateTime, nullable=True)
-    first_request_timestamp = db.Column(db.DateTime, nullable=True)
-    request_count = db.Column(db.Integer, default=0)
-    request_limit = db.Column(db.Integer, default=1000)
-
-
-class ApiKey(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    api_key = db.Column(db.String(150), unique=True, nullable=False)
-    created_at = db.Column(db.TIMESTAMP, server_default=func.now(), nullable=False)
-    user = db.relationship("User", backref=db.backref("api_keys", lazy=True))
-
-
-class ApiKeyAction(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    action_type = db.Column(db.String(20), nullable=False)
-    action_date = db.Column(db.Date, nullable=False)
-    action_count = db.Column(db.Integer, default=0)
-    user = db.relationship("User", backref=db.backref("api_key_actions", lazy=True))
-
-
-class SignupForm(FlaskForm):
-    username = StringField(
-        "Username",
-        validators=[
-            DataRequired(),
-            Length(min=3, max=20),
-            Regexp(
-                r"^[A-Za-z0-9_-]+$",
-                message="Username can only contain letters, numbers, dashes, and underscores.",
-            ),
-        ],
-        render_kw={"autocomplete": "username", "minlength": "3", "maxlength": "20"},
-    )
-    email = StringField(
-        "Email",
-        validators=[DataRequired(), Email(), Length(min=6, max=45)],
-        render_kw={
-            "type": "email",
-            "autocomplete": "email",
-            "minlength": "6",
-            "maxlength": "45",
-        },
-    )
-    password = PasswordField(
-        "Password",
-        validators=[DataRequired(), Length(min=8, max=25)],
-        render_kw={
-            "type": "password",
-            "autocomplete": "new-password",
-            "minlength": "8",
-            "maxlength": "25",
-        },
-    )
-    confirm_password = PasswordField(
-        "Confirm Password",
-        validators=[DataRequired(), Length(min=8, max=25)],
-        render_kw={
-            "type": "password",
-            "autocomplete": "new-password",
-            "minlength": "8",
-            "maxlength": "25",
-        },
-    )
-    submit = SubmitField("Sign Up")
-
-
-class CompleteSignupForm(FlaskForm):
-    username = StringField(
-        "Username",
-        validators=[
-            DataRequired(),
-            Length(min=3, max=20),
-            Regexp(
-                r"^[A-Za-z0-9_-]+$",
-                message="Username can only contain letters, numbers, dashes, and underscores.",
-            ),
-        ],
-        render_kw={"autocomplete": "username", "minlength": "3", "maxlength": "20"},
-    )
-    password = PasswordField(
-        "Password",
-        validators=[DataRequired(), Length(min=8, max=25)],
-        render_kw={
-            "type": "password",
-            "autocomplete": "new-password",
-            "minlength": "8",
-            "maxlength": "25",
-        },
-    )
-    confirm_password = PasswordField(
-        "Confirm Password",
-        validators=[DataRequired(), Length(min=8, max=25)],
-        render_kw={
-            "type": "password",
-            "autocomplete": "new-password",
-            "minlength": "8",
-            "maxlength": "25",
-        },
-    )
-    submit = SubmitField("Complete Signup")
-
-
-class LoginForm(FlaskForm):
-    email = StringField(
-        "Email",
-        validators=[DataRequired(), Email(), Length(min=6, max=45)],
-        render_kw={
-            "type": "email",
-            "autocomplete": "email",
-            "minlength": "6",
-            "maxlength": "45",
-        },
-    )
-    password = PasswordField(
-        "Password",
-        validators=[DataRequired(), Length(min=8, max=25)],
-        render_kw={
-            "type": "password",
-            "autocomplete": "current-password",
-            "minlength": "8",
-            "maxlength": "25",
-        },
-    )
-    remember_me = BooleanField("Remember me")
-    submit = SubmitField("Log In")
-
-
-class ForgotPasswordForm(FlaskForm):
-    email = StringField(
-        "Email",
-        validators=[DataRequired(), Email(), Length(min=6, max=45)],
-        render_kw={
-            "type": "email",
-            "autocomplete": "email",
-            "minlength": "6",
-            "maxlength": "45",
-        },
-    )
-    submit = SubmitField("Send Reset Link")
-
-
-class EmailConfirmationForm(FlaskForm):
-    email = StringField(
-        "Email",
-        validators=[DataRequired(), Email(), Length(min=6, max=45)],
-        render_kw={
-            "type": "email",
-            "autocomplete": "email",
-            "minlength": "6",
-            "maxlength": "45",
-        },
-    )
-    submit = SubmitField("Resend Confirmation Email")
-
-
-class ResetPasswordForm(FlaskForm):
-    password = PasswordField(
-        "New Password",
-        validators=[DataRequired(), Length(min=8, max=25)],
-        render_kw={"autocomplete": "new-password", "minlength": "8", "maxlength": "25"},
-    )
-    confirm_password = PasswordField(
-        "Confirm Password",
-        validators=[DataRequired(), Length(min=8, max=25)],
-        render_kw={"autocomplete": "new-password", "minlength": "8", "maxlength": "25"},
-    )
-    submit = SubmitField("Reset Password")
-
-
-class UpdateProfileForm(FlaskForm):
-    username = StringField(
-        "Username",
-        validators=[
-            DataRequired(),
-            Length(min=3, max=20),
-            Regexp(
-                r"[A-Za-z0-9_-]+$",
-                message="Username can only contain leters, numbers, dashes, and underscores.",
-            ),
-        ],
-        render_kw={"autocomplete": "username", "minlength": "3", "maxlength": "20"},
-    )
-    submit = SubmitField("Update Profile")
-
-
-class FeatureRequestForm(FlaskForm):
-    name = StringField(
-        "Name",
-        validators=[
-            DataRequired(),
-            Length(min=3, max=20),
-            Regexp(
-                r"^(?!\s)[A-Za-z]+(?:\s[A-Za-z]+)*(?<!\s)$",
-                message="Name must contain only alphabets, no leading/trailing spaces, and at least one alphabet.",
-            ),
-        ],
-        render_kw={
-            "type": "text",
-            "autocomplete": "name",
-            "pattern": "^(?!\s)[A-Za-z]+(?:\s[A-Za-z]+)*(?<!\s)$",
-            "title": "Name must contain only alphabets, no leading/trailing spaces, and at least one alphabet.",
-            "minlength": "3",
-            "maxlength": "20",
-        },
-    )
-    email = StringField(
-        "Email",
-        validators=[DataRequired(), Email(), Length(min=6, max=45)],
-        render_kw={
-            "type": "email",
-            "autocomplete": "email",
-            "minlength": "6",
-            "maxlength": "45",
-        },
-    )
-    message = TextAreaField(
-        "Message",
-        validators=[DataRequired(), Length(min=10, max=200)],
-        render_kw={"minlength": "10", "maxlength": "200"},
-    )
-    submit = SubmitField("Submit Request")
-
-
-class ReportProblemForm(FlaskForm):
-    name = StringField(
-        "Name",
-        validators=[
-            DataRequired(),
-            Length(min=3, max=20),
-            Regexp(
-                r"^(?!\s)[A-Za-z]+(?:\s[A-Za-z]+)*(?<!\s)$",
-                message="Name must contain only alphabets, no leading/trailing spaces, and at least one alphabet.",
-            ),
-        ],
-        render_kw={
-            "type": "text",
-            "autocomplete": "name",
-            "pattern": "^(?!\s)[A-Za-z]+(?:\s[A-Za-z]+)*(?<!\s)$",
-            "title": "Name must contain only alphabets, no leading/trailing spaces, and at least one alphabet.",
-            "minlength": "3",
-            "maxlength": "20",
-        },
-    )
-    email = StringField(
-        "Email",
-        validators=[DataRequired(), Email(), Length(min=6, max=45)],
-        render_kw={
-            "type": "email",
-            "autocomplete": "email",
-            "minlength": "6",
-            "maxlength": "45",
-        },
-    )
-    message = TextAreaField(
-        "Message",
-        validators=[DataRequired(), Length(min=10, max=200)],
-        render_kw={"minlength": "10", "maxlength": "200"},
-    )
-    submit = SubmitField("Submit Report")
-
-
-class ContactUsForm(FlaskForm):
-    name = StringField(
-        "Name",
-        validators=[
-            DataRequired(),
-            Length(min=3, max=20),
-            Regexp(
-                r"^(?!\s)[A-Za-z]+(?:\s[A-Za-z]+)*(?<!\s)$",
-                message="Name must contain only alphabets, no leading/trailing spaces, and at least one alphabet.",
-            ),
-        ],
-        render_kw={
-            "type": "text",
-            "autocomplete": "name",
-            "pattern": "^(?!\s)[A-Za-z]+(?:\s[A-Za-z]+)*(?<!\s)$",
-            "title": "Name must contain only alphabets, no leading/trailing spaces, and at least one alphabet.",
-            "minlength": "3",
-            "maxlength": "20",
-        },
-    )
-    email = StringField(
-        "Email",
-        validators=[DataRequired(), Email(), Length(min=6, max=45)],
-        render_kw={
-            "type": "email",
-            "autocomplete": "email",
-            "minlength": "6",
-            "maxlength": "45",
-        },
-    )
-    message = TextAreaField(
-        "Message",
-        validators=[DataRequired(), Length(min=10, max=200)],
-        render_kw={"minlength": "10", "maxlength": "200"},
-    )
-    submit = SubmitField("Send Message")
-
+#Initializing Database and Forms Classes
+from helpers.db.db_models import User, ApiKey, ApiKeyAction
+from helpers.forms.all_forms import SignupForm, CompleteSignupForm, LoginForm, ForgotPasswordForm, EmailConfirmationForm, ResetPasswordForm, UpdateProfileForm, FeatureRequestForm, ReportProblemForm, ContactUsForm
 
 def send_confirmation_email(user):
     confirmation_token = serializer.dumps(user.email, salt="email-confirmation-salt")
@@ -518,24 +200,23 @@ def get_api_key_user(api_key):
 
 currency_data = {}
 return_currencies = {}
-with open("currencies.json", "r") as f:
+with open("helpers/currencies/currencies.json", "r") as f:
     currency_data = json.load(f)
-with open("return_currencies.json", "r") as f:
+with open("helpers/currencies/return_currencies.json", "r") as f:
     return_currencies = json.load(f)
 
 
 def update_currency_data():
     global currency_data
     global return_currencies
-    with open("currencies.json", "r") as f:
+    with open("helpers/currencies/currencies.json", "r") as f:
         currency_data = json.load(f)
-    with open("return_currencies.json", "r") as f:
+    with open("helpers/currencies/return_currencies.json", "r") as f:
         return_currencies = json.load(f)
 
 
 # Schedule the update_currency_data function to run every 10 minutes
 scheduler.add_job(func=update_currency_data, trigger="interval", minutes=10)
-
 
 def convert_currency(from_currency, to_currency, amount):
     from_currency = from_currency.upper()
